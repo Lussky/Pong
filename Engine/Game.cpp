@@ -24,7 +24,8 @@
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd )
+	gfx( wnd ),
+	p1(50,240,Colors::White)
 {
 }
 
@@ -38,8 +39,11 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	p1.Move( wnd );
+	p1.ClampScreen();
 }
 
 void Game::ComposeFrame()
 {
+	p1.Draw( gfx );
 }
