@@ -25,8 +25,12 @@ Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd ),
-	p1( 50,240,Colors::White ),
-	ball( 400, 300, -4, -4, Colors::White )
+	rng( rd() ),
+	vx( 1,2 ),
+	vy( 1, 2 ),
+	p1( 50,240,Colors::White, 2 ),
+	p2( 750, 240, Colors::White, 1 ),
+	ball( 400, 300, -4, -4, Colors::White, vx( rng ), vy( rng ) )
 {
 }
 
@@ -42,13 +46,19 @@ void Game::UpdateModel()
 {
 	p1.Move( wnd );
 	p1.ClampScreen();
+	p2.Move(wnd);
+	p2.ClampScreen();
 	ball.Move();
-	ball.ClampScreen();
+	ball.Reset( 400, 300, vx( rng ), vy( rng ) );
+	ball.ClampScreenX();
+	ball.ClampScreenY();
 	ball.Collision( p1.GetX(), p1.GetWidth(), p1.GetY(), p1.GetHeight() );
+	ball.Collision( p2.GetX(), p2.GetWidth(), p2.GetY(), p2.GetHeight() );
 }
 
 void Game::ComposeFrame()
 {
 	p1.Draw( gfx );
+	p2.Draw( gfx );
 	ball.Draw( gfx );
 }

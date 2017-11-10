@@ -1,10 +1,11 @@
 #include "Paddle.h"
 
-Paddle::Paddle( float in_x, float in_y, Color in_c )
+Paddle::Paddle( float in_x, float in_y, Color in_c, int in_player )
 {
 	x = in_x;
 	y = in_y;
 	c = in_c;
+	player = in_player;
 }
 
 void Paddle::Draw( Graphics& gfx )
@@ -14,13 +15,29 @@ void Paddle::Draw( Graphics& gfx )
 
 void Paddle::Move( MainWindow& wnd )
 {
-	if (wnd.kbd.KeyIsPressed(VK_UP))
+	switch (player)
 	{
-		y -= 5;
-	}
-	if (wnd.kbd.KeyIsPressed(VK_DOWN))
-	{
-		y += 5;
+	case 1:
+		if (wnd.kbd.KeyIsPressed(VK_UP))
+		{
+			y -= 5;
+		}
+		if (wnd.kbd.KeyIsPressed(VK_DOWN))
+		{
+			y += 5;
+		}
+		break;
+	
+	case 2:
+		if (wnd.kbd.KeyIsPressed('W'))
+		{
+			y -= 5;
+		}
+		if (wnd.kbd.KeyIsPressed('S'))
+		{
+			y += 5;
+		} 
+		break;
 	}
 }
 

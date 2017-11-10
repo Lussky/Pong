@@ -45,10 +45,12 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
-	//std::mt19937 rng;
-	//std::random_device();
-	//std::uniform_int_distribution <float> r;
+	std::random_device rd;
+	std::mt19937 rng;
+	std::uniform_int_distribution <int> vx;
+	std::uniform_int_distribution <int> vy;
 	Paddle p1;
+	Paddle p2;
 	Ball ball;
 	/********************************/
 };
