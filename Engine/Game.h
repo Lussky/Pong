@@ -24,6 +24,8 @@
 #include "Mouse.h"
 #include "Graphics.h"
 #include "Paddle.h"
+#include "Ball.h"
+#include <random>
 
 class Game
 {
@@ -43,6 +45,10 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
+	//std::mt19937 rng;
+	//std::random_device();
+	//std::uniform_int_distribution <float> r;
 	Paddle p1;
+	Ball ball;
 	/********************************/
 };

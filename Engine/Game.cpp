@@ -25,7 +25,8 @@ Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd ),
-	p1(50,240,Colors::White)
+	p1( 50,240,Colors::White ),
+	ball( 400, 300, -4, -4, Colors::White )
 {
 }
 
@@ -41,9 +42,13 @@ void Game::UpdateModel()
 {
 	p1.Move( wnd );
 	p1.ClampScreen();
+	ball.Move();
+	ball.ClampScreen();
+	ball.Collision( p1.GetX(), p1.GetWidth(), p1.GetY(), p1.GetHeight() );
 }
 
 void Game::ComposeFrame()
 {
 	p1.Draw( gfx );
+	ball.Draw( gfx );
 }

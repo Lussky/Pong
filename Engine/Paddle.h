@@ -3,20 +3,24 @@
 #include "Graphics.h"
 #include "MainWindow.h"
 #include "Keyboard.h"
+#include "Ball.h"
 
 
 class Paddle
 {
 public:
-	Paddle( int in_x, int in_y, Color in_c );
+	Paddle( float in_x, float in_y, Color in_c );
 	void Draw( Graphics& gfx );
 	void Move( MainWindow& wnd );
 	void ClampScreen();
-	bool Collision();
+	float GetX();
+	float GetY();
+	float GetWidth();
+	float GetHeight();
 private:
-	int x;
-	int y;
-	static constexpr int width = 8;
-	static constexpr int height = 60;
+	float x;
+	float y;
+	static constexpr float width = 8;
+	static constexpr float height = 60;
 	Color c;
 };

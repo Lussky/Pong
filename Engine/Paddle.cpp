@@ -1,6 +1,6 @@
 #include "Paddle.h"
 
-Paddle::Paddle( int in_x, int in_y, Color in_c )
+Paddle::Paddle( float in_x, float in_y, Color in_c )
 {
 	x = in_x;
 	y = in_y;
@@ -36,4 +36,24 @@ void Paddle::ClampScreen()
 	{
 		y = MaxBorder - height;
 	}
+}
+
+float Paddle::GetX()
+{
+	return x;
+}
+
+float Paddle::GetY()
+{
+	return y;
+}
+
+float Paddle::GetWidth()
+{
+	return width;
+}
+
+float Paddle::GetHeight()
+{
+	return height;
 }
