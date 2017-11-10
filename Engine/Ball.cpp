@@ -49,11 +49,19 @@ void Ball::ClampScreen()
 
 void Ball::Collision( float x1, float width1, float y1, float height1 )
 {
-	if ( x - radius <= x1 + width1 &&
-		 y - radius >= y1 &&
-		 y + radius <= y1 + height1 )
+	const float right_p = x1 + width1;
+	const float bottom_p = y1 + height1;
+
+	const float left_b = x - radius;
+	const float right_b = x + radius;
+	const float top_b = y - radius;
+	const float bottom_b = y + radius;
+
+	if ( left_b <= right_p &&
+		 top_b <= bottom_p &&
+		 bottom_b >= y1 && 
+		 right_b >= x1 )
 	{
-		x = x + radius;
 		vx = -vx;
 	}
 
